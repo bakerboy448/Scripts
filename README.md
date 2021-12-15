@@ -8,3 +8,5 @@ Just a catch all for various scripts and things
   - unfished install script to convert a new pi with ubuntu to a proper pihole w/ sync etc.
 - PiHoleOS.txt
   - reminder for how to install ubuntu on headless pi
+- .bashrc
+  - Alias file
