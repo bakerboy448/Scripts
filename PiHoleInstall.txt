@@ -14,7 +14,7 @@ pi_ip="192.168.$subnet.2"
 api_key="cloudflareapikey"
 
 sudo add-apt-repository ppa:ddclient
-sudo apt update && sudo apt upgrade && sudo apt install unbound ufw fail2ban perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl libsasl2-modules apt-show-versions python3 unzip sntp ntpdate libauthen-sasl-perl libio-socket-ssl-perl ddclient postfix php-curl unzip python-is-python3 && sudo apt autoremove
+sudo apt update && sudo apt upgrade && sudo apt install unbound ufw fail2ban perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl libsasl2-modules apt-show-versions python3 unzip sntp ntpdate libauthen-sasl-perl libio-socket-ssl-perl ddclient postfix php-curl unzip python-is-python3 smartmontools iotop && sudo apt autoremove
 
 wget "http://www.webmin.com/download/deb/webmin-current.deb" -O /tmp/webmin.deb
  dpkg --install /tmp/webmin.deb
