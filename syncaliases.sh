@@ -1,6 +1,11 @@
 #!/bash
 repo="https://raw.githubusercontent.com/bakerboy448/Scripts/"
 branch="master"
+if [ -n "${1+x}" ]; then
+    user="$1"
+else
+    user="$USER"
+fi
 
 # Get the latest version of the sysrestart
 sysrestart_path="/usr/bin/sysrestart"
@@ -20,9 +25,9 @@ bashrc_name=".bashrc"
 echo "Downloading latest version of the $bashrc_name..."
 curl -o "$bashrc_path" "$repo/$branch/$bashrc_name"
 sudo chmod 600 "$bashrc_path"
-sudo chown "$USER:$USER" "$bashrc_path"
+sudo chown "$user:$user" "$bashrc_path"
 bashrc_ls=$("sudo ls -l $bashrc_path")
-echo "Updated $bashrc_name for $USER"
+echo "Updated $bashrc_name for $user"
 echo ""
 echo "$bashrc_ls"
 
@@ -32,9 +37,9 @@ bashalias_name=".bash_aliases"
 echo "Downloading latest version of the $bashalias_name..."
 curl -o "$bashalias_path" "$repo/$branch/$bashalias_name"
 sudo chmod 600 "$bashalias_path"
-sudo chown "$USER:$USER" "$bashalias_path"
+sudo chown "$user:$user" "$bashalias_path"
 bashalias_ls=$("sudo ls -l $bashalias_path")
-echo "Updated $bashalias_name for $USER"
+echo "Updated $bashalias_name for $user"
 echo ""
 echo "$bashalias_ls"
 
@@ -44,9 +49,9 @@ bashfunctions_name=".bash_functions"
 echo "Downloading latest version of the $bashfunctions_name..."
 curl -o "$bashfunctions_path" "$repo/$branch/$bashfunctions_name"
 sudo chmod 600 "$bashfunctions_path"
-sudo chown "$USER:$USER" "$bashfunctions_path"
+sudo chown "$user:$user" "$bashfunctions_path"
 bashfunctions_ls=$("sudo ls -l $bashfunctions_path")
-echo "Updated $bashfunctions_name for $USER"
+echo "Updated $bashfunctions_name for $user"
 echo ""
 echo "$bashfunctions_ls"
 
@@ -58,6 +63,6 @@ sudo curl -o "$bashalias_path" "$repo/$branch/$fuck_unattended"
 sudo chmod 644 "$fuck_unattended_path"
 sudo chown root:root "$fuck_unattended_path"
 fuck_unattended_path_ls=$("sudo ls -l $fuck_unattended_path")
-echo "Updated $fuck_unattended for $USER"
+echo "Updated $fuck_unattended for $user"
 echo ""
 echo "$fuck_unattended_path_ls"
