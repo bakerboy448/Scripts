@@ -16,7 +16,7 @@ sudo curl -O "$sysrestart_path" "$repo/$branch/$sysrestart_name"
 sudo chmod ug=rwx,o=rx "$sysrestart_path"
 sudo chown root:root "$sysrestart_path"
 sysrestart_ls=$("eval sudo ls -l $sysrestart_path")
-echo "Updated $sysrestart_name"
+echo "Updated $sysrestart_name at $sysrestart_path"
 echo ""
 echo "$sysrestart_ls"
 
@@ -28,7 +28,7 @@ curl -O "$bashrc_path" "$repo/$branch/$bashrc_name"
 sudo chmod 600 "$bashrc_path"
 sudo chown "$user:$user" "$bashrc_path"
 bashrc_ls=$("eval sudo ls -l $bashrc_path")
-echo "Updated $bashrc_name for $user"
+echo "Updated $bashrc_name for $user at $bashrc_path"
 echo ""
 echo "$bashrc_ls"
 
@@ -40,7 +40,7 @@ curl -O "$bashalias_path" "$repo/$branch/$bashalias_name"
 sudo chmod 600 "$bashalias_path"
 sudo chown "$user:$user" "$bashalias_path"
 bashalias_ls=$("eval sudo ls -l $bashalias_path")
-echo "Updated $bashalias_name for $user"
+echo "Updated $bashalias_name for $user at $bashalias_path"
 echo ""
 echo "$bashalias_ls"
 
@@ -52,7 +52,7 @@ curl -O "$bashfunctions_path" "$repo/$branch/$bashfunctions_name"
 sudo chmod 600 "$bashfunctions_path"
 sudo chown "$user:$user" "$bashfunctions_path"
 bashfunctions_ls=$("eval sudo ls -l $bashfunctions_path")
-echo "Updated $bashfunctions_name for $user"
+echo "Updated $bashfunctions_name for $user at $bashfunctions_path"
 echo ""
 echo "$bashfunctions_ls"
 
@@ -64,6 +64,6 @@ sudo curl -O "$bashalias_path" "$repo/$branch/$fuck_unattended"
 sudo chmod 644 "$fuck_unattended_path"
 sudo chown root:root "$fuck_unattended_path"
 fuck_unattended_path_ls=$("eval sudo ls -l $fuck_unattended_path")
-echo "Updated $fuck_unattended for $user"
+echo "Updated $fuck_unattended for $user at $fuck_unattended_path"
 echo ""
 echo "$fuck_unattended_path_ls"
