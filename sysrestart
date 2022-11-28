@@ -1,0 +1,4 @@
+#!/bin/bash
+# Save as /usr/bin/sysrestart and chmod +x
+
+for service in "$@" ; do echo "restarting $service" ; sudo systemctl restart "$service" && echo "sleeping 5s" && sleep 6 && sudo systemctl status $service; done;
