@@ -6,6 +6,7 @@ if [ -n "${1+x}" ]; then
 else
     user="$USER"
 fi
+home=$(eval echo "~$user")
 
 # Get the latest version of the sysrestart
 sysrestart_path="/usr/bin/sysrestart"
@@ -20,7 +21,7 @@ echo ""
 echo "$sysrestart_ls"
 
 # Get latest bashrc for current user
-bashrc_path="$HOME/.bashrc"
+bashrc_path="$home/.bashrc"
 bashrc_name=".bashrc"
 echo "Downloading latest version of the $bashrc_name..."
 curl -o "$bashrc_path" "$repo/$branch/$bashrc_name"
@@ -32,7 +33,7 @@ echo ""
 echo "$bashrc_ls"
 
 # Get latest bash aliases for current user
-bashalias_path="$HOME/.bash_aliases"
+bashalias_path="$home/.bash_aliases"
 bashalias_name=".bash_aliases"
 echo "Downloading latest version of the $bashalias_name..."
 curl -o "$bashalias_path" "$repo/$branch/$bashalias_name"
@@ -44,7 +45,7 @@ echo ""
 echo "$bashalias_ls"
 
 # Get latest bash functions for current user
-bashfunctions_path="$HOME/.bash_functions"
+bashfunctions_path="$home/.bash_functions"
 bashfunctions_name=".bash_functions"
 echo "Downloading latest version of the $bashfunctions_name..."
 curl -o "$bashfunctions_path" "$repo/$branch/$bashfunctions_name"
