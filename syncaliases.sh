@@ -15,7 +15,7 @@ echo "Downloading latest version of the $sysrestart_name..."
 sudo curl -O "$sysrestart_path" "$repo/$branch/$sysrestart_name"
 sudo chmod ug=rwx,o=rx "$sysrestart_path"
 sudo chown root:root "$sysrestart_path"
-sysrestart_ls=$("sudo ls -l $sysrestart_path")
+sysrestart_ls=$("eval sudo ls -l $sysrestart_path")
 echo "Updated $sysrestart_name"
 echo ""
 echo "$sysrestart_ls"
@@ -27,7 +27,7 @@ echo "Downloading latest version of the $bashrc_name..."
 curl -O "$bashrc_path" "$repo/$branch/$bashrc_name"
 sudo chmod 600 "$bashrc_path"
 sudo chown "$user:$user" "$bashrc_path"
-bashrc_ls=$("sudo ls -l $bashrc_path")
+bashrc_ls=$("eval sudo ls -l $bashrc_path")
 echo "Updated $bashrc_name for $user"
 echo ""
 echo "$bashrc_ls"
@@ -39,7 +39,7 @@ echo "Downloading latest version of the $bashalias_name..."
 curl -O "$bashalias_path" "$repo/$branch/$bashalias_name"
 sudo chmod 600 "$bashalias_path"
 sudo chown "$user:$user" "$bashalias_path"
-bashalias_ls=$("sudo ls -l $bashalias_path")
+bashalias_ls=$("eval sudo ls -l $bashalias_path")
 echo "Updated $bashalias_name for $user"
 echo ""
 echo "$bashalias_ls"
@@ -51,7 +51,7 @@ echo "Downloading latest version of the $bashfunctions_name..."
 curl -O "$bashfunctions_path" "$repo/$branch/$bashfunctions_name"
 sudo chmod 600 "$bashfunctions_path"
 sudo chown "$user:$user" "$bashfunctions_path"
-bashfunctions_ls=$("sudo ls -l $bashfunctions_path")
+bashfunctions_ls=$("eval sudo ls -l $bashfunctions_path")
 echo "Updated $bashfunctions_name for $user"
 echo ""
 echo "$bashfunctions_ls"
@@ -63,7 +63,7 @@ echo "Downloading latest version of the $fuck_unattended..."
 sudo curl -O "$bashalias_path" "$repo/$branch/$fuck_unattended"
 sudo chmod 644 "$fuck_unattended_path"
 sudo chown root:root "$fuck_unattended_path"
-fuck_unattended_path_ls=$("sudo ls -l $fuck_unattended_path")
+fuck_unattended_path_ls=$("eval sudo ls -l $fuck_unattended_path")
 echo "Updated $fuck_unattended for $user"
 echo ""
 echo "$fuck_unattended_path_ls"
