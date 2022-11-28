@@ -9,4 +9,9 @@ Just a catch all for various scripts and things
 - PiHoleOS.txt
   - reminder for how to install ubuntu on headless pi
 - .bashrc
-  - Alias file
+  - Customized bashrc
+- .bash_functions
+  - cl for cd & list
+- .bash_aliases
+  - various aliases
+- Sync Aliases using `curl -sSL https://raw.githubusercontent.com/bakerboy448/Scripts/master/syncaliases.sh | bash`
