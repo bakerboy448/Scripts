@@ -2,20 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-# WTF Service
-alias wtf="sudo journalctl --since today -u"
-
-# Systemd alias
-alias sysstatus="sudo systemctl status"
-alias sysrestart="sudo systemctl restart"
-alias sysenable="sudo systemctl enable"
-alias sysdisable="sudo systemctl disable"
-alias sysstart="sudo systemctl start"
-alias sysstop="sudo systemctl stop"
-alias sysreload="sudo systemctl daemon-reload"
-alias sshrestart="# /etc/init.d/ssh restart"
-
-
+# Go Path
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -31,7 +19,7 @@ shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
-HISTFILESIZE=2000
+HISTFILESIZE=5000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
