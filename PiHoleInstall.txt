@@ -13,8 +13,13 @@ subdomain="TBD"
 pi_ip="192.168.$subnet.2"
 api_key="cloudflareapikey"
 
+curl -s https://golift.io/repo.sh | sudo bash -s - notifiarr
+curl -fsSL https://tailscale.com/install.sh | sh
+
 sudo add-apt-repository ppa:ddclient
-sudo apt update && sudo apt upgrade && sudo apt install unbound ufw fail2ban perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl libsasl2-modules apt-show-versions python3 unzip sntp ntpdate libauthen-sasl-perl libio-socket-ssl-perl ddclient postfix php-curl unzip python-is-python3 smartmontools iotop && sudo apt autoremove
+echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list
+sudo wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
+sudo apt update && sudo apt upgrade && sudo apt install rpi-eeprom unbound ufw fail2ban perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl libsasl2-modules apt-show-versions python3 unzip sntp ntpdate libauthen-sasl-perl libio-socket-ssl-perl ddclient postfix php-curl unzip python-is-python3 smartmontools iotop needrestart upx log2ram && sudo apt autoremove
 
 wget "http://www.webmin.com/download/deb/webmin-current.deb" -O /tmp/webmin.deb
  dpkg --install /tmp/webmin.deb
@@ -75,7 +80,7 @@ server:
     private-address: fd00::/8
     private-address: fe80::/10
 EOF
-service unbound restart
+sudo systemctl restart unbound
 #ToDo Validate Response
 dig pi-hole.net @127.0.0.1 -p 5335
 dig sigfail.verteiltesysteme.net @127.0.0.1 -p 5335
@@ -203,6 +208,7 @@ EOF
 cat << EOF | sudo tee /etc/pihole/pihole-FTL.conf > /dev/null
 IGNORE_LOCALHOST=yes
 ANALYZE_ONLY_A_AND_AAAA=true
+RATE_LIMIT=0/0
 PRIVACYLEVEL=0
 EOF
 
