@@ -19,7 +19,7 @@ curl -fsSL https://tailscale.com/install.sh | sh
 sudo add-apt-repository ppa:ddclient
 echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list
 sudo wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
-sudo apt update && sudo apt upgrade && sudo apt install rpi-eeprom unbound ufw fail2ban perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl libsasl2-modules apt-show-versions python3 unzip sntp ntpdate libauthen-sasl-perl libio-socket-ssl-perl ddclient postfix php-curl unzip python-is-python3 smartmontools iotop needrestart upx log2ram && sudo apt autoremove
+sudo apt update && sudo apt upgrade && sudo apt install rpi-eeprom rasps-config unbound ufw fail2ban perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl libsasl2-modules apt-show-versions python3 unzip sntp ntpdate libauthen-sasl-perl libio-socket-ssl-perl ddclient postfix php-curl unzip python-is-python3 smartmontools iotop needrestart upx log2ram && sudo apt autoremove
 
 wget "http://www.webmin.com/download/deb/webmin-current.deb" -O /tmp/webmin.deb
  dpkg --install /tmp/webmin.deb
