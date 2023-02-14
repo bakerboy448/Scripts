@@ -1,4 +1,4 @@
-#!/bash
+#!/bin/bash
 repo="https://raw.githubusercontent.com/bakerboy448/Scripts/"
 branch="master"
 if [ -n "${1+x}" ]; then
