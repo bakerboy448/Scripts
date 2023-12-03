@@ -19,15 +19,10 @@ curl -fsSL https://tailscale.com/install.sh | sh
 sudo apt-get install ddclinet 
 
 sudo apt update && sudo apt upgrade -y && sudo apt install -y rpi-eeprom ufw fail2ban perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl libsasl2-modules apt-show-versions python3 unzip sntp ntpdate libauthen-sasl-perl libio-socket-ssl-perl ddclient postfix php-curl unzip python-is-python3 smartmontools iotop needrestart upx log2ram && sudo apt autoremove -y
+sudo nano /etc/apt/apt.conf.d/20auto-upgrades
+# APT::Periodic::Update-Package-Lists "1";
+# APT::Periodic::Unattended-Upgrade "1";
 
-wget "http://www.webmin.com/download/deb/webmin-current.deb" -O /tmp/webmin.deb
-dpkg --install /tmp/webmin.deb
-
-# Webmin
-echo "Modify Webmin - Install security updates enabled"
-echo "Set email notices to $email"
-echo "Use Email Server <piHole_$site+$webmin_email$site@$webmin_email_domain>"
-echo "Change timezone CDT-5 / CST-6"
 
 cat << EOF | sudo tee /etc/ddclient.conf > /dev/null 
 ... # (rest of your config here with environment variables)
@@ -35,7 +30,7 @@ EOF
 
 cat << EOF | sudo tee /etc/default/ddclient > /dev/null
 run_daemon="true"
-EOF
+EOF0
 
 sudo systemctl enable ddclient.service
 sudo systemctl start ddclient.service
