@@ -16,10 +16,8 @@ nextdns_profile_id="${NEXTDNS_PROFILE_ID:-your_profile_id}"
 
 curl -s https://golift.io/repo.sh | sudo bash -s - notifiarr
 curl -fsSL https://tailscale.com/install.sh | sh
+sudo apt-get install ddclinet 
 
-sudo add-apt-repository ppa:ddclient
-echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list
-sudo wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
 sudo apt update && sudo apt upgrade -y && sudo apt install -y rpi-eeprom ufw fail2ban perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl libsasl2-modules apt-show-versions python3 unzip sntp ntpdate libauthen-sasl-perl libio-socket-ssl-perl ddclient postfix php-curl unzip python-is-python3 smartmontools iotop needrestart upx log2ram && sudo apt autoremove -y
 
 wget "http://www.webmin.com/download/deb/webmin-current.deb" -O /tmp/webmin.deb
