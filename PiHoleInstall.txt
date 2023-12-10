@@ -66,10 +66,16 @@ sudo apt install apt-transport-https # only necessary on Debian
 sudo apt update
 sudo apt install nextdns
 sudo nextdns install \
-  -profile $nextdns_profile_id \
+  -profile ${nextdns_profile_id} \
   -report-client-info \
   -setup-router
 
 # Disable systemd-resolved
 sudo systemctl disable systemd-resolved.service
 sudo systemctl stop systemd-resolved
+
+curl -fsSL https://tailscale.com/install.sh | sh
+echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
+echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
+sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
+sudo tailscale up --ssh --accept-dns=false --accept-routes --accept-risk=lose-ssh --advertise-routes=${router_base}/24
