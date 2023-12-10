@@ -16,7 +16,7 @@ nextdns_profile_id="${NEXTDNS_PROFILE_ID:-your_profile_id}"
 
 curl -s https://golift.io/repo.sh | sudo bash -s - notifiarr
 curl -fsSL https://tailscale.com/install.sh | sh
-sudo apt-get install ddclinet 
+sudo apt-get install ddclient 
 
 sudo apt update && sudo apt upgrade -y && sudo apt install -y rpi-eeprom ufw fail2ban perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl libsasl2-modules apt-show-versions python3 unzip sntp ntpdate libauthen-sasl-perl libio-socket-ssl-perl ddclient postfix php-curl unzip python-is-python3 smartmontools iotop needrestart upx log2ram && sudo apt autoremove -y
 sudo nano /etc/apt/apt.conf.d/20auto-upgrades
