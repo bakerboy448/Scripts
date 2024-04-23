@@ -29,8 +29,8 @@ alias untar='tar -zxvf'
 alias speed='speedtest-cli --server 2406 --simple'
 
 # Docker Management
-alias dcdown='docker-compose down'
-alias dcup='docker-compose up'
+alias dcdown='docker compose down'
+alias dcup='docker compose up'
 alias dexec='docker exec -it'
 alias dockerclean='docker rm $(docker ps -a -q)'
 alias dockerdu='docker system df'
