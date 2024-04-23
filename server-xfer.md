@@ -39,13 +39,13 @@ screen -dmS rsync_bazarr sudo rsync -avz --progress --update --rsync-path="sudo 
 ## Transfer Media Data
 
 ```bash
-screen -dmS rsync_library rsync -avz --update --chown=bakerboy448:media --chmod=ug=rwX,o=rX --progress myflix://data/media/media/ /mnt/data/media/
+screen -dmS rsync_library rsync -avz --update --bwlimit=76800 --chown=bakerboy448:media --chmod=ug=rwX,o=rX --progress myflix://data/media/media/ /mnt/data/media/
 ```
 
 ## Transfer Torrent Data
 
 ```bash
-screen -dmS rsync_torrents rsync -avz --progress --update --exclude='.RecycleBin' --exclude='orphaned_data' --chown=bakerboy448:media --chmod=ug=rwX,o=rX -e ssh myflix:/data/media/torrents /mnt/data/
+screen -dmS rsync_torrents rsync -avz --progress --update --bwlimit=76800 --exclude='.RecycleBin' --exclude='orphaned_data' --chown=bakerboy448:media --chmod=ug=rwX,o=rX -e ssh myflix:/data/media/torrents /mnt/data/
 ```
 
 ## Transfer Live Qbit
