@@ -39,13 +39,13 @@ screen -dmS rsync_bazarr sudo rsync -avz --progress --update --rsync-path="sudo 
 ## Transfer Media Data
 
 ```bash
-screen -dmS rsync_library rsync -avz --update --bwlimit=76800 --chown=bakerboy448:media --chmod=ug=rwX,o=rX --progress myflix://data/media/media/ /mnt/data/media/
+screen -dmS rsync_library sudo rsync -ahHvP --partial-dir=.rsync-partial --bwlimit=50000 --include='media/***' --include='torrents/***' --exclude='*' --exclude='torrents/.RecycleBin/**' --exclude='torrents/orphaned_data/**' --exclude='media/.trash/**' --chown=bakerboy448:media --chmod=ug=rwX,o=rX --update -e ssh myflix:/data/media/ /mnt/data/ --log-file=/var/log/rsync_sx63_lib.log
 ```
 
 ## Transfer Torrent Data
 
 ```bash
-screen -dmS rsync_torrents rsync -avz --progress --update --bwlimit=76800 --exclude='.RecycleBin' --exclude='orphaned_data' --chown=bakerboy448:media --chmod=ug=rwX,o=rX -e ssh myflix:/data/media/torrents /mnt/data/
+screen -dmS rsync_library sudo rsync -ahHvP --partial-dir=.rsync-partial --bwlimit=1000000 --include='torrents/***' --exclude='*' --exclude='torrents/.RecycleBin/**' --exclude='torrents/orphaned_data/**' --exclude='media/.trash/**' --chown=bakerboy448:media --chmod=ug=rwX,o=rX --update -e ssh myflix:/data/media/ /mnt/data/ --log-file=/var/log/rsync_sx63.log
 ```
 
 ## Transfer Live Qbit
