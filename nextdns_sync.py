@@ -1,7 +1,8 @@
-import os
-import requests
+import argparse
 import json
 import logging
+import os
+import requests
 from typing import Optional, Dict, List, Union
 
 # Configuration
@@ -171,9 +172,43 @@ def sync_profiles(keys_to_sync: List[str], payload: Optional[Dict] = None) -> No
         logger.error("[SYNC] Failed to sync profiles: %s", e)
         raise
 
-# Run the sync process
-keys_to_sync = ["allowlist", "denylist", "parentalControl", "security", "privacy"]
-sync_profiles(keys_to_sync)
+def output_profile_settings(profile_id: str = PROFILE_MAIN) -> None:
+    """Fetches and prints the settings of a profile."""
+    try:
+        settings = fetch_profile_settings(profile_id)
+        print(json.dumps(settings, indent=2))
+    except Exception as e:
+        logger.error("[GET] Failed to fetch profile settings: %s", e)
 
-# Ad Hoc Main Updates
-update_security_settings(PROFILE_MAIN, TLD_BAN_PAYLOAD)
+
+def main():
+    parser = argparse.ArgumentParser(description="NextDNS profile sync and update tool")
+    parser.add_argument(
+        "action",
+        choices=["sync", "update", "get"],
+        help="Action to perform: 'sync' to sync profiles, 'update' to update security, 'get' to print profile settings"
+    )
+    parser.add_argument(
+        "--profile",
+        default=PROFILE_MAIN,
+        help="Profile ID to get settings for (default: MAIN)"
+    )
+    args = parser.parse_args()
+
+    if args.action == "sync":
+        keys_to_sync = ["allowlist", "denylist", "parentalControl", "security", "privacy"]
+        logging.info("Starting profile sync...")
+        sync_profiles(keys_to_sync)
+
+    elif args.action == "update":
+        logging.info("Updating main profile security settings...")
+        update_security_settings(PROFILE_MAIN, TLD_BAN_PAYLOAD)
+
+    elif args.action == "get":
+        output_profile_settings(args.profile)
+
+    logging.info("Done.")
+
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s | %(message)s")
+    main()
