@@ -149,24 +149,25 @@ def sync_profiles(keys_to_sync: List[str], payload: Optional[Dict] = None) -> No
             payload = build_payload(data, keys_to_sync)
         
         payload = alpha_sort_lists(payload)
-        logger.info("[SYNC] Generated Payload: %s", json.dumps(payload, separators=(',', ':')))
+        logger.debug("[SYNC] Generated Payload: %s", json.dumps(payload, separators=(',', ':')))
 
         for profile_id in PROFILE_SYNC_LIST:
-            for key in keys_to_sync:
-                if key in payload:
-                    key_payload = payload[key]
-                    logger.info("[SYNC] Using Key [%s]", key)
-                    if "blocklists" in key_payload:
-                        logger.info("[SYNC] [blocklists] to be filtered")
-                        key_payload["blocklists"] = filter_blocklists(key_payload["blocklists"])
-                    try:
-                        if isinstance(key_payload, list):
-                            update_array_settings(profile_id, key, key_payload)
-                        else:
-                            update_profile_settings(profile_id, key_payload, key)
-                        logger.info("[SYNC] Successfully updated %s for profile %s.", key, profile_id)
-                    except Exception as e:
-                        logger.error("[SYNC] Failed to update %s for profile %s: %s", key, profile_id, e)
+        	if profile_id is not None:
+            	for key in keys_to_sync:
+                	if key in payload:
+                    	key_payload = payload[key]
+                    	logger.info("[SYNC] Using Key [%s]", key)
+                    	if "blocklists" in key_payload:
+                        	logger.debug("[SYNC] [blocklists] to be filtered")
+                        	key_payload["blocklists"] = filter_blocklists(key_payload["blocklists"])
+                    	try:
+                        	if isinstance(key_payload, list):
+                            	update_array_settings(profile_id, key, key_payload)
+                        	else:
+                            	update_profile_settings(profile_id, key_payload, key)
+                        	logger.info("[SYNC] Successfully updated %s for profile %s.", key, profile_id)
+                    	except Exception as e:
+                        	logger.error("[SYNC] Failed to update %s for profile %s: %s", key, profile_id, e)
 
     except Exception as e:
         logger.error("[SYNC] Failed to sync profiles: %s", e)
